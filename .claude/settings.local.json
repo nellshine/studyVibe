@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash"
+    ]
+  }
+}
+{
+  "autoUpdatesChannel": "latest",
+  "statusLine": {
+    "type": "command",
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\HanByul\\.claude\\scripts\\statusline.ps1"
+  }
+}
