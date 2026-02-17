@@ -35,13 +35,16 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormValues) => {
-    // 실제 API 호출 대신 시뮬레이션
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("폼 데이터:", data);
-    toast.success("문의가 성공적으로 전송되었습니다!", {
-      description: `${data.name}님, 빠른 시일 내에 답변 드리겠습니다.`,
-    });
-    reset();
+    try {
+      // 실제 API 호출 대신 시뮬레이션
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      toast.success("문의가 성공적으로 전송되었습니다!", {
+        description: `${data.name}님, 빠른 시일 내에 답변 드리겠습니다.`,
+      });
+      reset();
+    } catch {
+      toast.error("전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
+    }
   };
 
   return (

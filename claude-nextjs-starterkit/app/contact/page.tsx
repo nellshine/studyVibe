@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { PageHeader } from "@/components/shared/page-header";
 import { ContactForm } from "@/components/shared/contact-form";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "문의",
+};
 
 export default function ContactPage() {
   return (

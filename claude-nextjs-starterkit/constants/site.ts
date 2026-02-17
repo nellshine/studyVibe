@@ -12,10 +12,12 @@ export const mainNav: NavItem[] = [
   { title: "문의", href: "/contact" },
 ];
 
+export type FeatureIcon = "Layers" | "Moon" | "Smartphone" | "ShieldCheck" | "Puzzle" | "Code";
+
 export interface Feature {
   title: string;
   description: string;
-  icon: string;
+  icon: FeatureIcon;
 }
 
 export const features: Feature[] = [

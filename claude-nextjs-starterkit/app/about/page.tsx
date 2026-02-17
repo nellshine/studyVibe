@@ -1,11 +1,16 @@
+import type { Metadata } from "next";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
+export const metadata: Metadata = {
+  title: "소개",
+};
+
 const techStack = [
-  { name: "Next.js 16", description: "React 기반 풀스택 프레임워크" },
-  { name: "React 19", description: "최신 React with Server Components" },
-  { name: "TailwindCSS v4", description: "유틸리티 우선 CSS 프레임워크" },
+  { name: "Next.js", description: "React 기반 풀스택 프레임워크" },
+  { name: "React", description: "최신 React with Server Components" },
+  { name: "TailwindCSS", description: "유틸리티 우선 CSS 프레임워크" },
   { name: "shadcn/ui", description: "재사용 가능한 UI 컴포넌트 라이브러리" },
   { name: "TypeScript", description: "타입 안전한 JavaScript 슈퍼셋" },
   { name: "Zod", description: "TypeScript 네이티브 스키마 검증" },

@@ -9,10 +9,10 @@ import {
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
-import { features } from "@/constants/site";
+import { features, type FeatureIcon } from "@/constants/site";
 
 // 아이콘 이름 → 컴포넌트 매핑
-const iconMap: Record<string, LucideIcon> = {
+const iconMap: Record<FeatureIcon, LucideIcon> = {
   Layers,
   Moon,
   Smartphone,

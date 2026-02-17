@@ -1,6 +1,6 @@
 "use client";
 
-import { useMediaQuery } from "react-responsive";
+import { useEffect, useState } from "react";
 
 // TailwindCSS v4 기본 브레이크포인트 프리셋
 const breakpoints = {
@@ -13,17 +13,47 @@ const breakpoints = {
 
 type Breakpoint = keyof typeof breakpoints;
 
-/** TailwindCSS 브레이크포인트 기준 미디어쿼리 훅 */
+/** TailwindCSS 브레이크포인트 기준 미디어쿼리 훅 (SSR 안전) */
 export function useBreakpoint(breakpoint: Breakpoint): boolean {
-  return useMediaQuery({ minWidth: breakpoints[breakpoint] });
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${breakpoints[breakpoint]}px)`);
+    setMatches(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, [breakpoint]);
+
+  return matches;
 }
 
 /** 모바일 여부 (< 768px) */
 export function useIsMobile(): boolean {
-  return useMediaQuery({ maxWidth: breakpoints.md - 1 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoints.md - 1}px)`);
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
+  return isMobile;
 }
 
 /** 데스크톱 여부 (>= 1024px) */
 export function useIsDesktop(): boolean {
-  return useMediaQuery({ minWidth: breakpoints.lg });
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${breakpoints.lg}px)`);
+    setIsDesktop(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
+  return isDesktop;
 }

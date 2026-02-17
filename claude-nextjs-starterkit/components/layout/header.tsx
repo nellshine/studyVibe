@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { NavLink } from "@/components/layout/nav-link";
 import { MobileNav } from "@/components/layout/mobile-nav";
